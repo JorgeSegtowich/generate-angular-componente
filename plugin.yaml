@@ -9,7 +9,8 @@ metadata:
 spec:
   type: app
   compatibility:
-    - python
+    # - python
+    - angular
   about: docs/about.md
   implementation: docs/implementation.md
   release-notes: docs/release-notes-0.0.1.md
@@ -20,14 +21,17 @@ spec:
     - Api
   stk-projects-only: false
   inputs:
-    - label: Type name of your resource
-      name: resource
+    - label: Nome do componente
+      name: componentName
       type: text
       required: true
-      default: Client
       pattern: '([A-Z][a-z]+)+'
-      help: 'Inform your resource name (e.g.: Client)'
-    - label: Choose http method of new endpoint
+      help: 'Informe o nome do seu componente (e.g.: About)'
+    - label: É um standalone componente?
+      name: standalone
+      type: bool
+      required: true
+      help: 'Se sim, o componente terá a flag standalone'
       name: method
       type: text
       items:
@@ -39,3 +43,6 @@ spec:
       default: GET
       required: true
       help: 'Inform the method of the endpoint (e.g.: post or delete)'
+  computed-inputs:
+    component_name_min: "{{ componentName | lower }}"
+    standalone_min: "{{ standalone | lower }}"
