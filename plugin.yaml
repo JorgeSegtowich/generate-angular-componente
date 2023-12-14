@@ -32,17 +32,6 @@ spec:
       type: bool
       required: true
       help: 'Se sim, o componente terá a flag standalone'
-      name: method
-      type: text
-      items:
-        - GET
-        - POST
-        - PUT
-        - DELETE
-        - PATCH
-      default: GET
-      required: true
-      help: 'Inform the method of the endpoint (e.g.: post or delete)'
   computed-inputs:
     component_name_min: "{{ componentName | lower }}"
     standalone_min: "{{ standalone | lower }}"
